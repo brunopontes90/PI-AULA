@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class tag extends Model
+{
+    use HasFactory;
+    protected $fillable = ['name'];
+
+    public function products(){
+        // REPRESENTA UM INNER JOIN DE 2 TABELAS
+        return $this->belongsToMany(Product::class);
+    }
+}
