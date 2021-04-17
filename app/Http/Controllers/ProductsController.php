@@ -81,7 +81,7 @@ class ProductsController extends Controller
     }
 
     public function show(Product $product){
-        dd($product);
+        return view('product.show')->with('product', $product);
     }
 
     /*

@@ -29,7 +29,7 @@ class TagController extends Controller
 
     public function show(tag $tag)
     {
-
+        return view('tag.show');
     }
 
 
@@ -47,6 +47,12 @@ class TagController extends Controller
 
     public function destroy(tag $tag)
     {
+        //SÓ PODE APAGAR SE A CATEGORIA NÃO TIVER NENHUM PRODUTO
+        if($tag->products()->count() > 0){
+            session()->flash('success','Você não pode deletar a tag que tenha produto!');
+            return redirect(route('tag.index')); //RETORNA PARA A TELA DE PRODUTO
+        }
+
         $tag->delete();
         session()->flash('success','Tag apagadas com sucesso!');
         return redirect(route('tag.index')); //RETORNA PARA A TELA DE PRODUTO

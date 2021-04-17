@@ -10,8 +10,11 @@ class isAdmin
 
     public function handle(Request $request, Closure $next)
     {
-        if(Auth()->user()->isAdmin)
-            return $next($request);
+        if(Auth()->user()){
+            if(Auth()->user()->isAdmin)
+                return $next($request);
+        }
+
 
         session()->flash('success','Você não tem permissão para acessar essa pagina!');
         return redirect()->back();

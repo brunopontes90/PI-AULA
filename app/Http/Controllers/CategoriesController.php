@@ -20,6 +20,11 @@ class CategoriesController extends Controller
         return redirect(route('category.index')); //RETORNA PARA A TELA DE PRODUTO
     }
     public function destroy(Category $category){
+        //SÓ PODE APAGAR SE A CATEGORIA NÃO TIVER NENHUM PRODUTO
+        if($category->products()->count() > 0){
+            session()->flash('success','Você não pode deletar uma categoria que tenha produto!');
+            return redirect(route('category.index')); //RETORNA PARA A TELA DE PRODUTO
+        }
 
         $category->delete();
         session()->flash('success','Categoria apagadas com sucesso!');

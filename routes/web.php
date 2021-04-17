@@ -16,10 +16,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-// ROTA PARA APENAS VISUALIZAR PRODUTOS SEM ESTAR LOGADO
-Route::resource('/product', ProductsController::class, ['only' => ['show']]);
-
-
 Route::group(['middleware' => 'auth'], function(){
     //carrinho
 });
@@ -32,3 +28,6 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::resource('/category', CategoriesController::class);
     Route::resource('/tag', TagController::class)->middleware(['auth']);
 });
+
+// ROTA PARA APENAS VISUALIZAR PRODUTOS SEM ESTAR LOGADO
+Route::resource('/product', ProductsController::class, ['only' => ['show']]);
