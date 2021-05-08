@@ -14,7 +14,7 @@ class Product extends Model
     protected $fillable = ['name', 'description', 'price', 'category_id', 'image'];
 
     // CATEGORIA DO PRODUTO
-    //Só usa o belongsTo quando tem 1 do lado de la
+    // Só usa o belongsTo quando tem 1 do lado de la
     // belongsTo = PERTENCE Á ESSE PRODUTO
     // FAZ UM INNER JOIN DA CATEGORIES USANDO ID_CATEGORY
     public function category(){
@@ -24,5 +24,10 @@ class Product extends Model
     public function tags(){
         // REPRESENTA UM INNER JOIN DE 2 TABELAS
         return $this->belongsToMany(Tag::class);
+    }
+
+    // REGRA PARA RETORNAR AS PROMOÇOES
+    public static function promocoes(){
+        return Product::all()->take(3);
     }
 }

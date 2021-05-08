@@ -3,11 +3,11 @@
 <section>
     <div class="row py-5">
         <div class="text-center">
-            <h2>{{$tag->name}}</h2>
+            <h2>{{$category->name}}</h2>
             <span class="text-muted">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores, eveniet.</span>
         </div>
         <div class="row">
-            @foreach ($products() as $product)
+            @foreach ($products as $product)
             <div class="col-lg-4 col-md-2 col-sm-10">
                 <div class="text-center" style="height: 250px;">
                     <img src="{{asset($product->image)}}" class="h-100">
@@ -24,7 +24,7 @@
         </div>
         @endforeach
     </div>
-    <div class="row">
+    <div class="row d-flex justify-content-center mt-4">
         {{$products->links()}}
     </div>
 </section>

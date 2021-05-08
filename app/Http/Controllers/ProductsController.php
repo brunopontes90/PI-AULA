@@ -20,7 +20,6 @@ class ProductsController extends Controller
     }
 
     public function store(Request $request){
-        dd($request->all());
         // VERIFICA SE ESTA SENDO ADICIONADO ALGUMA IMAGEM AO UPLOAD DE IMAGEM
         if ($request->image) {
             $image =  $request->file('image')->store('product'); //PEGA A IMAGEM QUE VEM DO REQUEST E SALVA NA PRODUCT

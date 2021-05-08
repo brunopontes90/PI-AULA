@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <title>Loja do Senac</title>
+    @yield('css')
 </head>
 <body>
     <header>
@@ -20,7 +20,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuCategoria" role="button" data-bs-toggle="dropdown" aria-expanded="false">Categoria</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuCategoria">
                       @foreach (\App\Models\Category::all() as $category)
-                        <li><a class="dropdown-item" href="#">{{$category->name}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('category.show', $category->id)}}">{{$category->name}}</a></li>
                       @endforeach
                     </ul>
                   </li>
@@ -28,7 +28,7 @@
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuTag" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tags</a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuTag">
                       @foreach (\App\Models\Tag::all() as $tag)
-                        <li><a class="dropdown-item" href="#">{{$tag->name}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('tag.show', $tag->id)}}">{{$tag->name}}</a></li>
                       @endforeach
                     </ul>
                   </li>
