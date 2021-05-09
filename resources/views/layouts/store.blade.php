@@ -33,6 +33,7 @@
                     </ul>
                   </li>
                 </ul>
+                <a class="nav-link" href="{{route('cart.show')}}">Carrinho({{\App\Models\Cart::count()}})</a>
               </div>
             </div>
           </nav>
